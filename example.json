@@ -1,0 +1,152 @@
+{
+  "examples": [
+    {
+      "description": "Esempio predizione di Iris Setosa",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8080/api/predictions",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "sepalLength": 5.1,
+          "sepalWidth": 3.5,
+          "petalLength": 1.4,
+          "petalWidth": 0.2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "classIndex": 0,
+          "className": "Setosa",
+          "probabilities": {
+            "Setosa": 0.9823,
+            "Versicolor": 0.0156,
+            "Virginica": 0.0021
+          }
+        }
+      }
+    },
+    {
+      "description": "Esempio predizione di Iris Versicolor",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8080/api/predictions",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "sepalLength": 6.4,
+          "sepalWidth": 3.2,
+          "petalLength": 4.5,
+          "petalWidth": 1.5
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "classIndex": 1,
+          "className": "Versicolor",
+          "probabilities": {
+            "Setosa": 0.0012,
+            "Versicolor": 0.9256,
+            "Virginica": 0.0732
+          }
+        }
+      }
+    },
+    {
+      "description": "Esempio predizione di Iris Virginica",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8080/api/predictions",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "sepalLength": 7.7,
+          "sepalWidth": 3.8,
+          "petalLength": 6.7,
+          "petalWidth": 2.2
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "classIndex": 2,
+          "className": "Virginica",
+          "probabilities": {
+            "Setosa": 0.0001,
+            "Versicolor": 0.0234,
+            "Virginica": 0.9765
+          }
+        }
+      }
+    },
+    {
+      "description": "Esempio richiesta health check",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/actuator/health",
+        "headers": {}
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "status": "UP",
+          "components": {
+            "diskSpace": {
+              "status": "UP",
+              "details": {
+                "total": 250059350016,
+                "free": 86415069184
+              }
+            },
+            "model": {
+              "status": "UP",
+              "details": {
+                "status": "Model is working correctly",
+                "testPrediction": "Setosa"
+              }
+            },
+            "ping": {
+              "status": "UP"
+            }
+          }
+        }
+      }
+    },
+    {
+      "description": "Esempio richiesta metrics",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:8080/actuator/metrics",
+        "headers": {}
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "names": [
+            "jvm.memory.max",
+            "jvm.threads.states",
+            "jvm.gc.memory.promoted",
+            "http.server.requests",
+            "system.cpu.count",
+            "jvm.memory.used",
+            "jvm.gc.max.data.size",
+            "jvm.memory.committed",
+            "system.cpu.usage",
+            "jvm.gc.memory.allocated",
+            "jvm.threads.daemon",
+            "system.load.average.1m",
+            "jvm.threads.live",
+            "jvm.threads.peak",
+            "process.uptime",
+            "process.cpu.usage"
+          ]
+        }
+      }
+    }
+  ]
+}
